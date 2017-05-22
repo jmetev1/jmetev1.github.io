@@ -6,27 +6,62 @@ $(document).ready(function() {
     $('#quotes:last-child').css('padding-bottom', '40px');
     
     $.getJSON('data.json', function (data) {
-        // YOUR CODE BELOW HERE //
+        var billyPics=['images/billy/billy-0.jpg', 'images/billy/billy-1.jpg', 'images/billy/billy-2.jpg', 'images/billy/billy-3.jpg'];
         
-        // uncomment this to inspect all available data; delete when done //
+        const billyClicker=function(event) {
+            for (let i=0; i<billyPics.length; i++) {
+                if ($billy.children("img").attr("src")===billyPics[i]) {
+                    if (i===3){
+                        var next=billyPics[0]
+                    }
+                    else {var next= billyPics[i+1]
+                    }
+                    $billy.children("img").attr("src",next)
+                    return
+                } 
+            }
+        }
+        const $billy=$('#image-container-billy' )
+        $billy.on('click', billyClicker)
 
-        // EXAMPLE: Looping over top rated recordings; replace with your code //
         let topRated = data.discography.topRated;
-        
-         var bestAlbums=[];
-         bestAlbums=topRated.map(function(album, index, topRated) {
-            let one=album['title'];
-            $("#list-top-rated").append(one)
-            $("#list-top-rated").append('<li>')
-            
+        var bestAlbums=[];
+        bestAlbums=topRated.map(function(album, index, topRated) {
+            let li= $('<li>')
+                .text(album['title']+' by '+album['artist'])
+                .appendTo($("#list-top-rated"))
+                .addClass(album.art)
+                .attr('art', album.art)
+                li.on('click', function(event){
+                    const trl= $('#list-top-rated')
+                    trl.children('img').attr('src', album.art)
+                })
         });
+        $('#list-top-rated')
+            .prepend('<img id= "before top rated" src="images/album/voice-in-the-night.jpg"/>')
 
-         //$section = $('<section>').attr('id', 'section-rider');
-
+        $('<section>')
+            .attr('id','section-recordings')
+            .appendTo($('#sidebar'))
+            .text('Other Recordings')
+        let moreRecordings = data.discography.recordings;
         
+         var other=[];
+         other=moreRecordings.map(function(album, index, moreRecordings) {
+            let li= $('<li>')
+                .attr('index', index)
+                .text(album['title'])
+                .appendTo($("#section-recordings"))
+            li.on('click', function(event) {
+                const sr= $('#section-recordings')
+                sr.children('img').attr('src', album.art)
+            })
+        });
+        $('#section-recordings')
+            .prepend('<img id= "best fucking image" src="images/album/voice-in-the-night.jpg"/>')
+            
+
         // YOUR CODE ABOVE HERE //
     })
     .fail(function() { console.log('getJSON on discography failed!'); });
 });
-
-
