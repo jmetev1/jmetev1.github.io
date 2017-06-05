@@ -1,0 +1,19 @@
+.row-max {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #330b5b;
+    margin-bottom: 20px;
+}
+
+.drop-down li :hover {
+    color: white;
+    background-color: purple;
+    font-weight: bold;
+}
+
+select {
+    color: black;
+}

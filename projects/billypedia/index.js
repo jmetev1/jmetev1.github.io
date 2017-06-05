@@ -58,8 +58,31 @@ $(document).ready(function() {
             })
         });
         $('#section-recordings')
-            .prepend('<img id= "best fucking image" src="images/album/voice-in-the-night.jpg"/>')
-            
+            .prepend('<img id= "best fucking image" src="images/album/eastern-rebellion.jpg"/>')
+    let $section = $('<section>')
+        .attr('id', 'section-rider');
+    $section.append($('<h3>')
+        .text('Billy\'s Rider'))
+        .appendTo($('#sections'));    
+        
+    var rider=data.rider
+    var createTable=function(rider) {
+        var createRow= function(instrument) {
+            var $row=$('<tr>');
+            var $type= $('<td>').text(instrument.type);
+            var $desc= $('<td>').text(instrument.desc)
+            $row.append($type);
+            $row.append($desc);
+            return $row;
+        }
+        var $table=$('<table>');
+        var $rows=rider.map(createRow);
+        $table.append($rows)
+        return $table;
+    }
+    createTable(rider).appendTo($("#section-rider"))
+
+
 
         // YOUR CODE ABOVE HERE //
     })
