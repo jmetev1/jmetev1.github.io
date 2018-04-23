@@ -9,9 +9,19 @@
         <script>
             $('h1').text($('meta')[0].content.toString())
             var v =document.querySelector('meta[name=viewport]')
+            var orig = v.toString();
             var x  = () => {
                 console.log('onblur called');
                 v.attributes['content'].value='initial-scale=1';
+            }
+            var zoomDisable = () => {
+                v.attributes['content'].value='user-scalable=no, initial-scale=1';
+                $('h1').text($('meta')[0].content.toString())
+                
+            }
+            var zoomEnable = () => {
+                v.attributes['content'].value='user-scalable=yes, initial-scale=1';
+                $('h1').text($('meta')[0].content.toString())
             }
             var y = () => {
                 v.attributes['content'].value =  'initial-scale=1';
@@ -31,12 +41,12 @@
             <button onclick="y()">click me to set initialscale 1 </button>
         </nav>
         <main>
-            <h1>before</h1>
-            input2 ahead
-            <input onblur="x()" ontouchend="y()" type="text" label='first' style="font-size: 12px;">
+            <h1>before2</h1>
+            input1
+            <input onblur="zoomEnable()" ontouchend="zoomDisable()" onfocus="zoomDisable()" type="text" style="font-size: 12px;">
             </input>
-
-            <input onblur="x()" ontouchend="y()" type="text" lable='second' style="font-size: 12px;">
+            input2
+            <input onblur="zoomEnable()" ontouchend="zoomDisable()" onfocus="zoomDisable()" type="text" style="font-size: 12px;">
             </input>
         </main>
     </div>
