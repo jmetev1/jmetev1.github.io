@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="maximum-scale=1.0 user-scalable=true"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.2/gist-embed.min.js"></script>
         <link rel="stylesheet" href="css/studies.css" type="text/css" />
-        <meta name="viewport" content="initial-scale=1.0"/>
+        <title>Studies</title>
         <script>
-            var y  = () => {
-                console.log('onblur y called');
-                var v =document.querySelector('meta[name=viewport]');
-                v.attributes['content'].value='initial-scale=1.0';
+            var x  = () => {
+                var v =document.querySelector('meta[name=viewport]')
+                v.attributes['content'].value='initial-scale=1.5';
             }
         </script>
-        <title>Portfolio </title>
     </head>
     <body>
         <div id="all-contents">
         <nav> 
-            <header>Home of the Make Prairie Dogs Great Again Foundation</header>   
-            <ul id='portfolio'
+            <header>only change user scalable true </header>       
                     <li><a href="index.html">HOME "You can't go here again"</a></li>
                     <li><a href="portfolio.html">Portfolio, but if you're looking for my artwork, it's at my mom's house</a></li>
-                    <li><a href="studies.html">Studies, where I'm gonna keep my note</a></li>
+                    <li><a href="studies.html">Studies, where I'm gonna keep my notes</a></li>
             </ul>
+            <button onclick="x()">click me </button>
         </nav>
         <main>
-            input appears below
-            <input type='text' onblur=y()>
+            <input type="text" style="font-size: 12px;">
             </input>
         </main>
     </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script id="portfolioScript">$(document).ready(function() {$.getJSON('projects/projects.json').then(function(data) { data.projects.forEach(function(project){ $('#portfolio')
-        .append('<li><a href="projects/' + project.name + '/">' + project.title + ' : ' + project.description + '</a></li>'); }); }); });</script>
     </body>
 </html>
