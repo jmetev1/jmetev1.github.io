@@ -7,32 +7,18 @@
         <link rel="stylesheet" href="css/studies.css" type="text/css" />
         <title>Studies</title>
         <script>
-            $('h1').text($('meta')[0].content.toString())
-            var v =document.querySelector('meta[name=viewport]')
-            var orig = v.toString();
-            var x  = () => {
-                console.log('onblur called');
-                v.attributes['content'].value='initial-scale=1';
-            }
-            var zoomDisable = () => {
+            const viewport = document.querySelector('meta[name=viewport]')
+
+            const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
+
+            const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
+            const disableZoom = () => { 
                 console.log('zoom disabled')
-                v.attributes['content'].value='user-scalable=no, initial-scale=1';
-                $('h1').text($('meta')[0].content.toString())
-                
+                viewport.attributes['content'].value = zoomDisabledViewportContent 
             }
-            var zoomEnable = () => {
-                console.log('zoomenabled')
-                v.attributes['content'].value='user-scalable=yes, initial-scale=1';
-                $('h1').text($('meta')[0].content.toString())
-            }
-            var y = () => {
-                v.attributes['content'].value =  'initial-scale=1';
-                $('h1').text($('meta')[0].content.toString())
-                console.log('ontouchend called');
-            }
-            var multi = (scale) => {
-                v.attributes['content'].value = scale;
-                $('h1').text(scale);
+            const enableZoom = () => { 
+                console.log('zoom enabled')
+                viewport.attributes['content'].value = zoomEnabledViewportContent 
             }
         </script>
     </head>
@@ -48,8 +34,8 @@
         </nav>
         <main>
             <h1>before2</h1>
-            modified on touchstart
-            <input onblur="zoomEnable()" onfocus="zoomDisable()"  type="text" style="font-size: 12px;">
+            this one is going to work
+            <input onblur="enableZoom()" onfocus="disableZoom()" ontouchend="disableZoom()" type="text" style="font-size: 12px;">
             </input>
             <p>
                 new para
