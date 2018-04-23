@@ -15,11 +15,13 @@
                 v.attributes['content'].value='initial-scale=1';
             }
             var zoomDisable = () => {
+                console.log('zoom disabled')
                 v.attributes['content'].value='user-scalable=no, initial-scale=1';
                 $('h1').text($('meta')[0].content.toString())
                 
             }
             var zoomEnable = () => {
+                console.log('zoomenabled')
                 v.attributes['content'].value='user-scalable=yes, initial-scale=1';
                 $('h1').text($('meta')[0].content.toString())
             }
@@ -47,7 +49,7 @@
         <main>
             <h1>before2</h1>
             modified on touchstart
-            <input onblur="zoomEnable()" ontouchstart="zoomDisable()" onfocus="zoomDisable()" type="text" style="font-size: 12px;">
+            <input onblur="zoomEnable()" onfocus="zoomDisable()"  type="text" style="font-size: 12px;">
             </input>
             <p>
                 new para
