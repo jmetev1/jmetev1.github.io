@@ -28,6 +28,10 @@
                 $('h1').text($('meta')[0].content.toString())
                 console.log('ontouchend called');
             }
+            var multi = (scale) => {
+                v.attributes['content'].value = scale;
+                $('h1').text(scale);
+            }
         </script>
     </head>
     <body>
@@ -42,8 +46,8 @@
         </nav>
         <main>
             <h1>before2</h1>
-            input1
-            <input onblur="zoomEnable()" ontouchend="zoomDisable()" onfocus="zoomDisable()" type="text" style="font-size: 12px;">
+            modified on touchstart
+            <input onblur="zoomEnable()" ontouchstart="zoomDisable()" onfocus="zoomDisable()" type="text" style="font-size: 12px;">
             </input>
             <p>
                 new para
