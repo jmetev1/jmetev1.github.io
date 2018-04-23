@@ -7,17 +7,23 @@
         <link rel="stylesheet" href="css/studies.css" type="text/css" />
         <title>Studies</title>
         <script>
+            $('h1').text($('meta')[0].content))
             var v =document.querySelector('meta[name=viewport]')
             var x  = () => {
                 console.log('onblur called');
                 v.attributes['content'].value='initial-scale=1';
+            }
+            var y = () => {
+                v.attributes['content'].value =  'initial-scale=1';
+                $('h1').text($('meta')[0].content))
+                console.log('ontouchend called');
             }
         </script>
     </head>
     <body>
         <div id="all-contents">
         <nav> 
-            <header>only change user scalable true </header>       
+            <header></header>       
                     <li><a href="index.html">HOME "You can't go here again"</a></li>
                     <li><a href="portfolio.html">Portfolio, but if you're looking for my artwork, it's at my mom's house</a></li>
                     <li><a href="studies.html">Studies, where I'm gonna keep my notes</a></li>
@@ -25,8 +31,12 @@
             <button >click me </button>
         </nav>
         <main>
-            input ahead
-            <input onblur="x()" type="text" style="font-size: 12px;">
+            <h1>before</h1>
+            input2 ahead
+            <input onblur="x()" ontouchend="y()" type="text" label='first' style="font-size: 12px;">
+            </input>
+
+            <input onblur="x()" ontouchend="y()" type="text" lable='second' style="font-size: 12px;">
             </input>
         </main>
     </div>
