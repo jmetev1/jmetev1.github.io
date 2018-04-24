@@ -10,19 +10,21 @@
             const viewport = document.querySelector('meta[name=viewport]')
 
             const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
-
+            // order inside meta tags matters????????????
+            //had this before const zoomEnabledViewportContent = viewport.attributes['content'].value + ', user-scalable=yes, maximum-scale=5,'
+            
             const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
 
 
             const disableZoom = () => { 
                 console.log('zoom disabled')
                 viewport.attributes['content'].value = zoomDisabledViewportContent 
-//                 $('header').text($('meta')[0].content.toString())
+                $('header').text($('meta')[0].content.toString())
             }
             const enableZoom = () => { 
                 console.log('zoom enabled')
                 viewport.attributes['content'].value = zoomEnabledViewportContent 
-//                 $('header').text($('meta')[0].content.toString())
+                $('header').text($('meta')[0].content.toString())
             }
         </script>
     </head>
@@ -43,13 +45,12 @@
                 <p>
                     new para
                 </p>
-                input2
-                <input onblur="zoomEnable()" ontouchend="zoomDisable()" onfocus="zoomDisable()" type="text" style="font-size: 12px;">
-                </input>
         </div>
+        <p>
         <div>
             <header></header>       
         </div>
+        </p>
         </main>
     </div>
     </body>
