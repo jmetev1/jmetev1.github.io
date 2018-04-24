@@ -9,9 +9,9 @@
         <script>
             const viewport = document.querySelector('meta[name=viewport]')
 
-            const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5'
+            const zoomEnabledViewportContent = viewport.attributes['content'].value + ', user-scalable=yes, maximum-scale=5'
 
-            const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1'
+            const zoomDisabledViewportContent = viewport.attributes['content'].value + ', user-scalable=no, maximum-scale=1'
             const disableZoom = () => { 
                 console.log('zoom disabled')
                 viewport.attributes['content'].value = zoomDisabledViewportContent 
