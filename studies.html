@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="maximum-scale=1.0 user-scalable=yes"/>
+        <meta name="viewport" content="user-scalable=no"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.2/gist-embed.min.js"></script>
         <link rel="stylesheet" href="css/studies.css" type="text/css" />
         <title>Studies</title>
         <script>
-            var x  = () => {
-                var v =document.querySelector('meta[name=viewport]')
-                v.attributes['content'].value='initial-scale=1.5';
+            const viewport = document.querySelector('meta[name=viewport]')
+            const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
+            // order inside meta tags matters????????????
+            //had this before const zoomEnabledViewportContent = viewport.attributes['content'].value + ', user-scalable=yes, maximum-scale=5,'
+            
+            const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
+            const disableZoom = () => { 
+                console.log('zoom disabled')
+                viewport.attributes['content'].value = zoomDisabledViewportContent 
+                $('header').text($('meta')[0].content.toString())
             }
-
+            const enableZoom = () => { 
+                console.log('zoom enabled')
+                viewport.attributes['content'].value = zoomEnabledViewportContent 
+                $('header').text($('meta')[0].content.toString())
+            }
         </script>
     </head>
     <body>
         <div id="all-contents">
-        <nav> 
-            <header>only change user scalable no </header>       
-                    <li><a href="index.html">HOME "You can't go here again"</a></li>
-                    <li><a href="portfolio.html">Portfolio, but if you're looking for my artwork, it's at my mom's house</a></li>
-                    <li><a href="studies.html">Studies, where I'm gonna keep my notes</a></li>
-            </ul>
-            <button onclick="x()">click me </button>
-        </nav>
-        <main>
-            hello new
-            <input type="text" style="font-size: 12px;">
-            </input>
-        </main>
-    </div>
+            <nav> 
+                <li><a href="index.html">HOME "You can't go here again"</a></li>
+                <li><a href="portfolio.html">Portfolio, but if you're looking for my artwork, it's at my mom's house</a></li>
+                <li><a href="studies.html">Studies, where I'm gonna keep my notes</a></li>
+                <button onclick="y()">click me to set initialscale 1 </button>
+            </nav>
+            <main>
+                this one is going to work
+                <p>
+
+                    <div>
+                        <input type="text" style="font-size: 12px;">
+                        </input>
+                    </div>
+                </p>
+                <p>
+                    <header>
+                        def gonna work
+                    </header>       
+                </p>
+            </main>
+        </div>
     </body>
 </html>
