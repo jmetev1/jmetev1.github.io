@@ -15,6 +15,10 @@
             
             const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
 
+            const userScalable = on => {
+                viewport.attributes['content'].value = viewport.attributes['content'].value + `, user-scalable=${on ? 'yes' : 'no'}`;
+
+            }
 
             const disableZoom = () => { 
                 console.log('zoom disabled')
@@ -34,12 +38,16 @@
                 <li><a href="index.html">HOME "You can't go here again"</a></li>
                 <li><a href="portfolio.html">Portfolio, but if you're looking for my artwork, it's at my mom's house</a></li>
                 <li><a href="studies.html">Studies, where I'm gonna keep my notes</a></li>
-                <button onclick="y()">click me to set initialscale 1 </button>
             </nav>
             <main>
                 this one is going to work
                 <p>
-
+                    <button onclick="userScalable(true)">
+                        userscalableOn
+                    </button>
+                    <button onclick="userScalable(false)">
+                        userscalableOff
+                    </button>
                     <div>
                         <input onblur="enableZoom()" onfocus="disableZoom()" ontouchend="disableZoom()" type="text" style="font-size: 12px;">
                         </input>
