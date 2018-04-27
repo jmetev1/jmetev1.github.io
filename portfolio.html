@@ -49,18 +49,24 @@
                     <button onclick="userScalable(false)">
                         userscalableOff
                     </button>
-                    <div>
+                    <div> bare input
+                        <input type="text" style="font-size: 12px;">
+                        </input>
+                    </div>
+                    <div> onfocus calls userscable(false)
                         <input  type="text" style="font-size: 12px;"
                             onfocus="userScalable(false)">
                         </input>
                     </div>
-                    <div>
-                        <input type="text" style="font-size: 12px;">
-                        </input>
-                    </div>
-                    <div> ontouchstart
+                    <div> ontouchstart calls userscable(false)
                         <input type="text" style="font-size: 12px;"
                             ontouchstart="userScalable(false)"
+                        >
+                        </input>
+                    </div>
+                    <div> ontouchend calls userscable(false)
+                        <input type="text" style="font-size: 12px;"
+                            ontouchend="userScalable(false)"
                         >
                         </input>
                     </div>
