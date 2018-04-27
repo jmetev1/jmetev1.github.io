@@ -3,33 +3,34 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.2/gist-embed.min.js"></script>
-        <link rel="stylesheet" href="css/studies.css" type="text/css" />
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.2/gist-embed.min.js"></script> -->
+        <!-- <link rel="stylesheet" href="css/studies.css" type="text/css" /> -->
         <title>Studies</title>
         <script>
             const viewport = document.querySelector('meta[name=viewport]')
 
-            const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
-            // order inside meta tags matters????????????
-            //had this before const zoomEnabledViewportContent = viewport.attributes['content'].value + ', user-scalable=yes, maximum-scale=5,'
+            // const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
+            // //had this before const zoomEnabledViewportContent = viewport.attributes['content'].value + ', user-scalable=yes, maximum-scale=5,'
             
-            const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
+            // const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
 
             const userScalable = on => {
                 viewport.attributes['content'].value = viewport.attributes['content'].value + `, user-scalable=${on ? 'yes' : 'no'}`;
-
+                show()
             }
-
-            const disableZoom = () => { 
-                console.log('zoom disabled')
-                viewport.attributes['content'].value = zoomDisabledViewportContent 
-                $('header').text($('meta')[0].content.toString())
-            }
-            const enableZoom = () => { 
-                console.log('zoom enabled')
-                viewport.attributes['content'].value = zoomEnabledViewportContent 
-                $('header').text($('meta')[0].content.toString())
-            }
+            const show = () => {
+                $('h3').text($('meta')[0].content.toString())
+            }   
+            // const disableZoom = () => { 
+            //     console.log('zoom disabled')
+            //     viewport.attributes['content'].value = zoomDisabledViewportContent 
+            //     $('header').text($('meta')[0].content.toString())
+            // }
+            // const enableZoom = () => { 
+            //     console.log('zoom enabled')
+            //     viewport.attributes['content'].value = zoomEnabledViewportContent 
+            //     $('header').text($('meta')[0].content.toString())
+            // }
         </script>
     </head>
     <body>
@@ -48,15 +49,19 @@
                     <button onclick="userScalable(false)">
                         userscalableOff
                     </button>
-                    <div>
+                    <!-- <div>
                         <input onblur="enableZoom()" onfocus="disableZoom()" ontouchend="disableZoom()" type="text" style="font-size: 12px;">
+                        </input>
+                    </div> -->
+                    <div>
+                        <input type="text" style="font-size: 12px;">
                         </input>
                     </div>
                 </p>
                 <p>
-                    <header>
-                        def gonna work
-                    </header>       
+                    <h3>
+                        def not gonna worka
+                    </h3>       
                 </p>
             </main>
         </div>
