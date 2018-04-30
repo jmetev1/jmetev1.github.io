@@ -20,6 +20,9 @@
             #a {
                 font-size: 16px;
             }
+            #b {
+                font-size: 12px;
+            }
     </style>
   </head>
   <body>
@@ -43,16 +46,22 @@
         render() {
             const { vp } = this.state
             const vpUpdate = origin => {
-                this.setState({ vp: window.viewport.attributes['content'].value.toString()+Date.now().toString()})
+                this.setState({ vp: window.viewport.attributes['content'].value.toString()+"      the time is " +
+                Date.now().toString()})
             }
             return (
                 <div>
                     {[1,2,3,4,5].map(l => (<div key={l.toString()} >
                         <Input vpUpdate={vpUpdate} l={l}/>
                     </div>))}
-                    <input id='a' placeholder={"this is 16px"}>
-                    </input>
-                    
+                    <div>
+                        <input id='a' placeholder={"this is 16px"}>
+                        </input>
+                    </div>
+                    <div>
+                        <input id='b' placeholder={"this is 12px regular input"}>
+                        </input>
+                    </div>
                     <ViewportWatch vp={vp}/>
                 </div>
             )
