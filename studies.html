@@ -37,7 +37,11 @@
     }
     const disableZoom = () => { viewport.attributes['content'].value = zoomDisabledViewportContent }
     const enableZoom = () => { viewport.attributes['content'].value = zoomEnabledViewportContent }
-//style={{marginRight: spacing + 'em'}} 
+    const zoomOut = () => {
+        console.log('zoomingout')
+        viewport.attributes['content'].value = 'initial-scale=1.0'
+    }
+
     class Application extends React.Component {
         constructor() {
             super()
@@ -49,6 +53,10 @@
                 this.setState({ vp: window.viewport.attributes['content'].value.toString()+"      the time is " +
                 Date.now().toString()})
             }
+            const localZoomOut = () => {
+                window.zoomOut()
+                vpUpdate()
+            }
             return (
                 <div>
                     {[1,2,3,4,5].map(l => (<div key={l.toString()} >
@@ -59,7 +67,10 @@
                         </input>
                     </div>
                     <div>
-                        <input id='b' placeholder={"this is 12px regular input"}>
+                        <input 
+                            onBlur={localZoomOut}
+                            id='b' 
+                            placeholder={"this is 12px regular input"}>
                         </input>
                     </div>
                     <ViewportWatch vp={vp}/>
