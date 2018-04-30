@@ -15,7 +15,7 @@
                 font-size: 12px;
             }
             input {
-                font-size: 12px;
+                font-size: 12px; 
             }
             #a {
                 font-size: 16px;
@@ -29,7 +29,7 @@
     <div id="app"></div>
     <script type="text/babel">
     const viewport = document.querySelector('meta[name=viewport]')
-    const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
+    const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes, initial-scale=1'
     const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
     const isZoomInput = el => {
         console.log(el)
@@ -80,7 +80,7 @@
     }
 
     class ViewportWatch extends React.Component {
-        render() {return (<div>new one is {this.props.vp}</div>)}
+        render() {return (<div>new one is newest {this.props.vp}</div>)}
     }
 
     class Input extends React.Component {
