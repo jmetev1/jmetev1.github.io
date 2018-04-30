@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hello World</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -14,32 +13,57 @@
     const viewport = document.querySelector('meta[name=viewport]')
     const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
     const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
-    const isZoomInput = el => el && (el.tagName === 'SELECT' || (el.tagName === 'INPUT' && el.type !== 'checkbox' && el.type !== 'radio'))
+    const isZoomInput = el => {
+        console.log(el)
+        return el && (el.tagName === 'SELECT' || (el.tagName === 'INPUT' && el.type !== 'checkbox' && el.type !== 'radio'))
+    }
     const disableZoom = () => { viewport.attributes['content'].value = zoomDisabledViewportContent }
     const enableZoom = () => { viewport.attributes['content'].value = zoomEnabledViewportContent }
-    
+
+    class ViewportWatch extends React.Component {
+        render() {return (<div>new one is {this.props.vp}</div>)}
+    }
     class Application extends React.Component {
+        constructor() {
+            super()
+            this.state = {vp: 'initial'}
+        }
         render() {
-            const { vp } = this.props
+            const { vp } = this.state
+            const vpUpdate = origin => {
+                this.setState({ vp: window.viewport.attributes['content'].value.toString()+Date.now().toString()})
+            }
             return (
-                <div>{vp}
+                <div>
+                    <ViewportWatch vp={vp}/>
                     {[1,2,3,4,5].map(l => (<div key={l.toString()} >
                         <input
+                            onFocus={event => {
+                                vpUpdate('alpha')
+                                console.log('onfocus')
+                                if (window.isZoomInput(event.target)) window.disableZoom()
+                            }} 
                             placeholder={'input #'+l}
                             onBlur={(event) => {
                                 console.log('onblur')
-                                if (isZoomInput(event.relatedTarget)) window.disableZoom()
-                                else enableZoom()
+                                const ruling = window.isZoomInput(event.relatedTarget)
+                                if (ruling) { 
+                                    /* if next element is window, event.relatedtarget is null so iszoominput returns false
+                                    */
+                                    window.disableZoom()
+                                }
+                                else {
+                                    window.enableZoom()
+                                }
+                                vpUpdate('alpha')
                                 }
                             }
-                            onFocus={event => {
-                                console.log('onfocus')
-                                if (isZoomInput(event.target)) disableZoom()
-                            }} 
                             onTouchEnd={
                                 event => { 
                                     console.log('ontouchend')
-                                    if (isZoomInput(event.target)) disableZoom() }
+                                    if (window.isZoomInput(event.target)) window.disableZoom() 
+                                    vpUpdate('alpha')
+                                }
                             } 
                         >
                         </input>
