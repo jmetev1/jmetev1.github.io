@@ -35,7 +35,6 @@
             }
             return (
                 <div>
-                    <ViewportWatch vp={vp}/>
                     {[1,2,3,4,5].map(l => (<div key={l.toString()} >
                         <input
                             onFocus={event => {
@@ -68,6 +67,7 @@
                         >
                         </input>
                     </div>))}
+                    <ViewportWatch vp={vp}/>
                 </div>
             )
         }
