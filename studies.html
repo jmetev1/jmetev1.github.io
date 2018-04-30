@@ -6,6 +6,18 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+            body {
+                background: rgb(125, 198, 205);
+                color: rgb(45, 45, 45);
+                padding: 10px;
+                font-family: arial;
+                font-size: 12px;
+            }
+            input {
+                font-size: 12px;
+            }
+    </style>
   </head>
   <body>
     <div id="app"></div>
@@ -23,6 +35,39 @@
     class ViewportWatch extends React.Component {
         render() {return (<div>new one is {this.props.vp}</div>)}
     }
+
+    class Input extends React.Component {
+        render() {
+            const { vpUpdate, l } = this.props
+            return (
+                <input
+                    onFocus={event => {
+                        vpUpdate('alpha')
+                        console.log('onfocus')
+                        if (window.isZoomInput(event.target)) window.disableZoom()
+                    }} 
+                    placeholder={'input #'+l}
+                    onBlur={(event) => {
+                        console.log('onblur')
+                        const ruling = window.isZoomInput(event.relatedTarget)
+                        if (ruling) { 
+                            /* if next element is window, event.relatedtarget is null so iszoominput returns false
+                            */
+                            window.disableZoom()
+                        }
+                        else {
+                            window.enableZoom()
+                        }
+                        vpUpdate('alpha')
+                        }
+                    }
+                    onTouchEnd={event => { 
+                            console.log('ontouchend')
+                            if (window.isZoomInput(event.target)) window.disableZoom() 
+                            vpUpdate('alpha')
+                    }} 
+                >
+    </input>)}}
     class Application extends React.Component {
         constructor() {
             super()
@@ -36,36 +81,7 @@
             return (
                 <div>
                     {[1,2,3,4,5].map(l => (<div key={l.toString()} >
-                        <input
-                            onFocus={event => {
-                                vpUpdate('alpha')
-                                console.log('onfocus')
-                                if (window.isZoomInput(event.target)) window.disableZoom()
-                            }} 
-                            placeholder={'input #'+l}
-                            onBlur={(event) => {
-                                console.log('onblur')
-                                const ruling = window.isZoomInput(event.relatedTarget)
-                                if (ruling) { 
-                                    /* if next element is window, event.relatedtarget is null so iszoominput returns false
-                                    */
-                                    window.disableZoom()
-                                }
-                                else {
-                                    window.enableZoom()
-                                }
-                                vpUpdate('alpha')
-                                }
-                            }
-                            onTouchEnd={
-                                event => { 
-                                    console.log('ontouchend')
-                                    if (window.isZoomInput(event.target)) window.disableZoom() 
-                                    vpUpdate('alpha')
-                                }
-                            } 
-                        >
-                        </input>
+                        <Input vpUpdate={vpUpdate} l={l}/>
                     </div>))}
                     <ViewportWatch vp={vp}/>
                 </div>
