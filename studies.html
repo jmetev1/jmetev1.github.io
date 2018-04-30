@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="user-scalable=no"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.2/gist-embed.min.js"></script>
-        <link rel="stylesheet" href="css/studies.css" type="text/css" />
-        <title>Studies</title>
-        <script>
-            const viewport = document.querySelector('meta[name=viewport]')
-            const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
-            // order inside meta tags matters????????????
-            //had this before const zoomEnabledViewportContent = viewport.attributes['content'].value + ', user-scalable=yes, maximum-scale=5,'
-            
-            const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
-            const disableZoom = () => { 
-                console.log('zoom disabled')
-                viewport.attributes['content'].value = zoomDisabledViewportContent 
-                $('header').text($('meta')[0].content.toString())
-            }
-            const enableZoom = () => { 
-                console.log('zoom enabled')
-                viewport.attributes['content'].value = zoomEnabledViewportContent 
-                $('header').text($('meta')[0].content.toString())
-            }
-        </script>
-    </head>
-    <body>
-        <div id="all-contents">
-            <nav> 
-                <li><a href="index.html">HOME "You can't go here again"</a></li>
-                <li><a href="portfolio.html">Portfolio, but if you're looking for my artwork, it's at my mom's house</a></li>
-                <li><a href="studies.html">Studies, where I'm gonna keep my notes</a></li>
-                <button onclick="y()">click me to set initialscale 1 </button>
-            </nav>
-            <main>
-                this one is going to work
-                <p>
-
-                    <div>
-                        <input type="text" style="font-size: 12px;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+    const viewport = document.querySelector('meta[name=viewport]')
+    const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
+    const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
+    const isZoomInput = el => el && (el.tagName === 'SELECT' || (el.tagName === 'INPUT' && el.type !== 'checkbox' && el.type !== 'radio'))
+    const disableZoom = () => { viewport.attributes['content'].value = zoomDisabledViewportContent }
+    const enableZoom = () => { viewport.attributes['content'].value = zoomEnabledViewportContent }
+    
+    class Application extends React.Component {
+        render() {
+            const { vp } = this.props
+            return (
+                <div>{vp}
+                    {[1,2,3,4,5].map(l => (<div key={l.toString()} >
+                        <input
+                            placeholder={'input #'+l}
+                            onBlur={(event) => {
+                                console.log('onblur')
+                                if (isZoomInput(event.relatedTarget)) window.disableZoom()
+                                else enableZoom()
+                                }
+                            }
+                            onFocus={event => {
+                                console.log('onfocus')
+                                if (isZoomInput(event.target)) disableZoom()
+                            }} 
+                            onTouchEnd={
+                                event => { 
+                                    console.log('ontouchend')
+                                    if (isZoomInput(event.target)) disableZoom() }
+                            } 
+                        >
                         </input>
-                    </div>
-                </p>
-                <p>
-                    <header>
-                        def gonna work
-                    </header>       
-                </p>
-            </main>
-        </div>
-    </body>
+                    </div>))}
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<Application vp={100}/>, document.getElementById('app'));
+    </script>
+  </body>
 </html>
