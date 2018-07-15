@@ -7,52 +7,10 @@
         <!-- <link rel="stylesheet" href="css/studies.css" type="text/css" /> -->
         <title>Studies</title>
         <script>
-            const show = () => {
-                console.log('show called')
-                $('h3').text($('meta')[0].content.toString())
-            }
-            const viewport = document.querySelector('meta[name=viewport]')
-            const zoomEnabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=5, user-scalable=yes'
-            const zoomDisabledViewportContent = viewport.attributes['content'].value + ', maximum-scale=1, user-scalable=no'
-
-            const isZoomInput = el => {
-                console.log(el)
-                el && (el.tagName === 'SELECT' || (el.tagName === 'INPUT' && el.type !== 'checkbox' && el.type !== 'radio'))
-            }
-            const disableZoom = () => { 
-                console.log('disabled')
-                viewport.attributes['content'].value = zoomDisabledViewportContent 
-            }
-            const enableZoom = () => { 
-                console.log('enabled')
-                viewport.attributes['content'].value = zoomEnabledViewportContent 
-            }
-            const onBlur = event => {
-                console.log('onblur called')
-                if (isZoomInput(event.relatedTarget)) disableZoom()
-                else enableZoom()
-            }
-            const onFocus = event => {
-                console.log('onfocus called')
-                if (isZoomInput(event.target)) {
-                    disableZoom()
-                }
-            }
-            const onTouchEnd = event => { 
-                console.log('ontouchend called')
-                if (isZoomInput(event.target)) {
-                    disableZoom() 
-                }
-                setTimeout(
-                    show, 1000
-                )
-            }
-            // const userScalable = on => {
-            //     viewport.attributes['content'].value = viewport.attributes['content'].value + `, user-scalable=${on ? 'yes' : 'no'}`;
-            //     show()
-            //     console.log('userscalable called')
-            // }
-            
+        //           window.onload = function () { setTimeout(
+        // function () { 
+        //   console.log('scrolling')
+        //   window.scrollTo(0, 1); }, 0); }
         </script>
     </head>
     <body>
@@ -63,71 +21,31 @@
                 <li><a href="studies.html">Studies, where I'm gonna keep my notes</a></li>
             </nav>
             <main>
-                this one is going to work
-                <p>
-                    <button onclick="userScalable(true)">
-                        userscalableOn
-                    </button>
-                    <button onclick="userScalable(false)">
-                        userscalableOff
-                    </button>
-                    <div> bare input
-                        <input type="text" style="font-size: 12px;">
-                        </input>
-                    </div>
-                    <div> onfocus calls userscable(false)
-                        <input  type="text" style="font-size: 12px;"
-                            onfocus="userScalable(false)">
-                        </input>
-                    </div>
-                    <div> ontouchstart calls userscable(false)
-                        <input type="text" style="font-size: 12px;"
-                            ontouchstart="userScalable(false)"
-                        >
-                        </input>
-                    </div>
-                    <div> ontouchend calls userscable(false)
-                        <input type="text" style="font-size: 12px;"
-                            ontouchend="userScalable(false)"
-                        >
-                        </input>
-                    </div>
-                    multiple inputs all with same functions
-                    <div>
-                        1<input type="text" style="font-size: 12px;"
-                        ontouchend="onTouchEnd(this)"
-                        onblur="onBlur(this)"
-                        onfocus="onFocus(this)"
-                        >
-                        </input>
-                    </div>
-                    <div>
-
-                        2<input type="text" style="font-size: 12px;"
-                        ontouchend="onTouchEnd(this)"
-                        onblur="onBlur(this)"
-                        onfocus="onFocus(this)"
-                        >
-                    </input>
-                </div>
-                <div>
-
-                    3<input type="text" style="font-size: 12px;"
-                    ontouchend="onTouchEnd(this)"
-                    onblur="onBlur(this)"
-                    onfocus="onFocus(this)"
-                    >
-                </input>
-            </div>
-            
-
-
-                </p>
-                <p>
-                    <h3>
-                        def gonna work
-                    </h3>       
-                </p>
+                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad                lsakdjflaksdjfkal;sdfj  sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad lsakdjflaksdjfkal;sdfj sdfkjas dl;fjas dkjfjaksdfjlk ajsdkjk fldfj jfkd dfjksj kdf fjkd jjk alsdf jkfljk lsdajkddafjkldfsjklfajklfdjdak
+                fsa djskdajf;jklfad
             </main>
         </div>
     </body>
